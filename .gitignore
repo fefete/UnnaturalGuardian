@@ -1,0 +1,9 @@
+Intermediate/
+Saved/
+*.opensdf
+*.log
+*.sdf
+*.sln
+*.suo
+*\Logs
+Binaries/
