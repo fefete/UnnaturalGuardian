@@ -7,3 +7,4 @@ Saved/
 *.suo
 *\Logs
 Binaries/
+*.db
