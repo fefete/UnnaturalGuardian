@@ -23,7 +23,7 @@ EBTNodeResult::Type UBTTaskNodeNextPatrolPoint::ExecuteTask(UBehaviorTreeCompone
       UBlackboardComponent* BlackboardComp = AICon->getBlackboardComp();
       AUGBotTargetPoint* CurrentPoint = Cast<AUGBotTargetPoint>(BlackboardComp->GetValueAsObject("LocationToGo"));
 
-	  TArray<AActor*> AvailableTargetPoints = Cast<AUGAICharacter>(AICon->GetControlledPawn())->BotPatrollingPoints;
+	    TArray<AActor*> AvailableTargetPoints = Cast<AUGAICharacter>(AICon->GetControlledPawn())->BotPatrollingPoints;
 
       //This variable will contain a random index in order to determine the next possible point
       int32 RandomIndex;
