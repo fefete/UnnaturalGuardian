@@ -72,7 +72,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
 	float playerCurrentHealth_;
 
+	UFUNCTION(BlueprintCallable, category = "Player")
 	void enableStealthMode();
+	UFUNCTION(BlueprintCallable, category = "Player")
 	void disableStealthMode();
 
 	// Call when we press a key (E) to destroy the enemy
@@ -104,6 +106,7 @@ public:
 	//Returns isStealthed_ bool  
 	UFUNCTION(BlueprintPure, Category = "Player")
 	bool isPlayerInStealthMode() const { return isStealthed_; };
+
 
 private:
 

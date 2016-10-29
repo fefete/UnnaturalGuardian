@@ -63,8 +63,8 @@ void AUnnaturalGuardianCharacter::SetupPlayerInputComponent(class UInputComponen
 	InputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	InputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
-	InputComponent->BindAction("Stealth", IE_Pressed, this, &AUnnaturalGuardianCharacter::enableStealthMode);
-	InputComponent->BindAction("Stealth", IE_Released, this, &AUnnaturalGuardianCharacter::disableStealthMode);
+	//InputComponent->BindAction("Stealth", IE_Pressed, this, &AUnnaturalGuardianCharacter::enableStealthMode);
+	//InputComponent->BindAction("Stealth", IE_Released, this, &AUnnaturalGuardianCharacter::disableStealthMode);
 
 
 	InputComponent->BindAction("DestroyEnemy", IE_Released, this, &AUnnaturalGuardianCharacter::destroyEnemy);
@@ -150,8 +150,7 @@ void AUnnaturalGuardianCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	UE_LOG(LogTemp, Log, TEXT("Player heaalth status: %f"), playerCurrentHealth_);
-
+	UE_LOG(LogTemp, Log, TEXT("Stealth: %s"), isStealthed_ ? TEXT("True") : TEXT("False") );
 }
 
 void AUnnaturalGuardianCharacter::decreasePlayerHealth(float amount)
@@ -165,12 +164,14 @@ void AUnnaturalGuardianCharacter::decreasePlayerHealth(float amount)
 void AUnnaturalGuardianCharacter::enableStealthMode()
 {
 	isStealthed_ = true;
+	UE_LOG(LogTemp, Log, TEXT("Is in Stealth mode"));
 	GetCharacterMovement()->MaxWalkSpeed = 300.f;
 }
 
 void AUnnaturalGuardianCharacter::disableStealthMode()
 {
 	isStealthed_ = false;
+	UE_LOG(LogTemp, Log, TEXT("Is not Stealth mode"));
 	GetCharacterMovement()->MaxWalkSpeed = 600.f;
 }
 
