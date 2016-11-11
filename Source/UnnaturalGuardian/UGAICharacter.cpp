@@ -50,8 +50,6 @@ void AUGAICharacter::Tick( float DeltaTime )
 		}
 	}
 
-	UE_LOG(LogTemp, Log, TEXT("Sight Radius: %f"), sightRadius_);
-
 }
 
 // Called to bind functionality to input

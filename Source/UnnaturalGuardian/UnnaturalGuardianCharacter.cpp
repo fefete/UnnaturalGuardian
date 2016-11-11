@@ -3,6 +3,7 @@
 #include "UnnaturalGuardian.h"
 #include "UnnaturalGuardianCharacter.h"
 #include "UGAICharacter.h"
+#include "Collectable.h"
 #include "OrbActor.h"
 
 //////////////////////////////////////////////////////////////////////////
@@ -69,6 +70,7 @@ void AUnnaturalGuardianCharacter::SetupPlayerInputComponent(class UInputComponen
 
 	InputComponent->BindAction("DestroyEnemy", IE_Released, this, &AUnnaturalGuardianCharacter::destroyEnemy);
 	InputComponent->BindAction("DestroyOrb", IE_Released, this, &AUnnaturalGuardianCharacter::destoryOrb);
+	//InputComponent->BindAction("CollectCollectable", IE_Released, this, &AUnnaturalGuardianCharacter::collectCollectable);
 
 	InputComponent->BindAxis("MoveForward", this, &AUnnaturalGuardianCharacter::MoveForward);
 	InputComponent->BindAxis("MoveRight", this, &AUnnaturalGuardianCharacter::MoveRight);
@@ -149,8 +151,6 @@ void AUnnaturalGuardianCharacter::MoveRight(float Value)
 void AUnnaturalGuardianCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-	UE_LOG(LogTemp, Log, TEXT("Stealth: %s"), isStealthed_ ? TEXT("True") : TEXT("False") );
 }
 
 void AUnnaturalGuardianCharacter::decreasePlayerHealth(float amount)
@@ -164,14 +164,12 @@ void AUnnaturalGuardianCharacter::decreasePlayerHealth(float amount)
 void AUnnaturalGuardianCharacter::enableStealthMode()
 {
 	isStealthed_ = true;
-	UE_LOG(LogTemp, Log, TEXT("Is in Stealth mode"));
 	GetCharacterMovement()->MaxWalkSpeed = 300.f;
 }
 
 void AUnnaturalGuardianCharacter::disableStealthMode()
 {
 	isStealthed_ = false;
-	UE_LOG(LogTemp, Log, TEXT("Is not Stealth mode"));
 	GetCharacterMovement()->MaxWalkSpeed = 600.f;
 }
 
@@ -200,7 +198,6 @@ void AUnnaturalGuardianCharacter::destroyEnemy()
 
 void AUnnaturalGuardianCharacter::destoryOrb()
 {
-
 	//Get All Colliding Actors and store them in an array
 	TArray<AActor *> CollidingActors;
 	SphereCollider->GetOverlappingActors(CollidingActors);
@@ -213,10 +210,9 @@ void AUnnaturalGuardianCharacter::destoryOrb()
 		//If cast is succesful and OrbActor is active
 		if (orbActor && !orbActor->IsPendingKill() && orbActor->isActive()) {
 
-			orbActor->decreaseHealth(15.f);
+			orbActor->decreaseHealth();
 
 		}
 
 	}
-
 }

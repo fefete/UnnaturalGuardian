@@ -40,11 +40,11 @@ void AOrbActor::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	//Add health to the Actor each tick
-	health_ += 0.5f;
+	health_ += 0.25;
 
-	scale_.X += 0.0015;
-	scale_.Y += 0.0015;
-	scale_.Z += 0.0015;
+	scale_.X += decreaseScalePercentage_ / 1000;
+	scale_.Y += decreaseScalePercentage_ / 1000;
+	scale_.Z += decreaseScalePercentage_ / 1000;
 
 	//Increase size of actor mesh each tick
 	actorMesh_->SetRelativeScale3D(scale_);
@@ -57,8 +57,6 @@ void AOrbActor::Tick(float DeltaTime)
 	else if (health_ <= 0.f) {
 		health_ = 0.f;
 
-		UE_LOG(LogTemp, Log, TEXT("Orb Defeated"));
-
 		Destroy();
 	}
 
@@ -68,9 +66,6 @@ void AOrbActor::Tick(float DeltaTime)
 	else if (scale_.X <= minScale_.X || scale_.Y <= minScale_.Y || scale_.Z <= minScale_.Z)
 		scale_ = minScale_;
 
-	UE_LOG(LogTemp, Log, TEXT("Orb Scale: ,%s"), *actorMesh_->GetComponentScale().ToString());
-	//UE_LOG(LogTemp, Log, TEXT("Orb Health: ,%f"), health_);
-
 }
 
 //Set the Active state
@@ -79,22 +74,14 @@ void AOrbActor::setActive(bool newState)
 	isActive_ = newState;
 }
 
-void AOrbActor::decreaseHealth(float amount)
+void AOrbActor::decreaseHealth()
 {
-	health_ -= amount;
-	varingPercentage_ = amount / maxHealth_;
+	health_ -= damageDealtByPlayer_;
+	//decreaseScalePercentage_ = amount / maxHealth_;
 
 	//Decrease the size of the mesh
-	scale_.X -= varingPercentage_;
-	scale_.Y -= varingPercentage_;
-	scale_.Z -= varingPercentage_;
-
-}
-
-void AOrbActor::wasDefeated()
-{
-	UE_LOG(LogTemp, Log, TEXT("Orb Defeated"));
-
-	Destroy();
+	scale_.X -= decreaseScalePercentage_ / maxHealth_;
+	scale_.Y -= decreaseScalePercentage_ / maxHealth_;
+	scale_.Z -= decreaseScalePercentage_ / maxHealth_;
 }
 
