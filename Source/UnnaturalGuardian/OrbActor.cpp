@@ -21,9 +21,9 @@ AOrbActor::AOrbActor()
 	scale_ = maxScale_;
 
 	//Set min Scale to be 10% of Max scale
-	minScale_.X = (maxScale_.X / 100) * 10;
-	minScale_.Y = (maxScale_.Y / 100) * 10;
-	minScale_.Z = (maxScale_.Z / 100) * 10;
+	minScale_.X = (maxScale_.X / 2);// *10;
+	minScale_.Y = (maxScale_.Y / 2);// *10;
+	minScale_.Z = (maxScale_.Z / 2);// *10;
 
 }
 
@@ -42,9 +42,9 @@ void AOrbActor::Tick(float DeltaTime)
 	//Add health to the Actor each tick
 	health_ += 0.25;
 
-	scale_.X += decreaseScalePercentage_ / 1000;
-	scale_.Y += decreaseScalePercentage_ / 1000;
-	scale_.Z += decreaseScalePercentage_ / 1000;
+	scale_.X += 0.0015;
+	scale_.Y += 0.0015;//decreaseScalePercentage_ / 1000;
+	scale_.Z += 0.0015;//decreaseScalePercentage_ / 1000;
 
 	//Increase size of actor mesh each tick
 	actorMesh_->SetRelativeScale3D(scale_);
