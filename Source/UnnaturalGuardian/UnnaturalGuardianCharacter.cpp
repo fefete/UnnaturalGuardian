@@ -151,6 +151,9 @@ void AUnnaturalGuardianCharacter::MoveRight(float Value)
 void AUnnaturalGuardianCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	if (playerCurrentHealth_ < 0)
+		Destroy();
 }
 
 void AUnnaturalGuardianCharacter::decreasePlayerHealth(float amount)
