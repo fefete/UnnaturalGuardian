@@ -49,7 +49,7 @@ AUnnaturalGuardianCharacter::AUnnaturalGuardianCharacter()
 	SphereCollider->SetSphereRadius(200);
 
 	//Set Initial health values
-	maxHealth_ = 100.f;
+	maxHealth_ = 250.0;
 	playerCurrentHealth_ = maxHealth_;
 
 }
