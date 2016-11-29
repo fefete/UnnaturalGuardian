@@ -213,7 +213,7 @@ void AUnnaturalGuardianCharacter::destoryOrb()
 		//If cast is succesful and OrbActor is active
 		if (orbActor && !orbActor->IsPendingKill() && orbActor->isActive()) {
 
-			orbActor->decreaseHealth();
+			//orbActor->decreaseHealth();
 
 		}
 

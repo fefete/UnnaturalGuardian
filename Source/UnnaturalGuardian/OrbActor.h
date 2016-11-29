@@ -30,17 +30,26 @@ public:
 	void setActive(bool newState);
 
 	//TOCALL: when decreasing the health of the actor (orb)
+	UFUNCTION(BlueprintCallable, Category = "OrbActor")
 	void decreaseHealth();
-	float getHealth() const { return health_; };
+
+	float getHealth() const { return health_; }
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "OrbActor")
+	bool wasDestoryed_;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "OrbActor")
+	float health_;
 
 protected:
 
 	bool isActive_;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "OrbActor")
-	float health_;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "OrbActor")
 	float maxHealth_;
+
+
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "OrbActor")
 	float decreaseScalePercentage_;

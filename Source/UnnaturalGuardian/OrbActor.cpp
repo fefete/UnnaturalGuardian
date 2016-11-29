@@ -56,6 +56,7 @@ void AOrbActor::Tick(float DeltaTime)
 	//Cap health to the min Value 0 and destroy;
 	else if (health_ <= 0.f) {
 		health_ = 0.f;
+		wasDestoryed_ = true;
 		Destroy();
 	}
 
