@@ -164,6 +164,11 @@ void AUnnaturalGuardianCharacter::decreasePlayerHealth(float amount)
 	healthChangeEffect();
 }
 
+void AUnnaturalGuardianCharacter::addPlayerHealth(float amount)
+{
+	playerCurrentHealth_ += amount;
+}
+
 void AUnnaturalGuardianCharacter::enableStealthMode()
 {
 	isStealthed_ = true;

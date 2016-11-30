@@ -98,6 +98,9 @@ public:
 	void decreasePlayerHealth(float amount);
 
 	UFUNCTION(BlueprintCallable, category = "Player")
+	void addPlayerHealth(float amount);
+
+	UFUNCTION(BlueprintCallable, category = "Player")
 	float getPlayerCurrentHealth() const { return playerCurrentHealth_; }
 
 	UFUNCTION(BlueprintCallable, category = "Player")
