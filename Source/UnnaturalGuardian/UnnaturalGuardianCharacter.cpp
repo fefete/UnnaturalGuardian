@@ -52,6 +52,8 @@ AUnnaturalGuardianCharacter::AUnnaturalGuardianCharacter()
 	maxHealth_ = 250.0;
 	playerCurrentHealth_ = maxHealth_;
 
+	isTakingDamage = false;
+
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -179,6 +181,11 @@ void AUnnaturalGuardianCharacter::disableStealthMode()
 {
 	isStealthed_ = false;
 	GetCharacterMovement()->MaxWalkSpeed = 600.f;
+}
+
+void AUnnaturalGuardianCharacter::setTakingDamage(bool state)
+{
+	isTakingDamage = state;
 }
 
 void AUnnaturalGuardianCharacter::destroyEnemy()

@@ -16,6 +16,7 @@ class AUnnaturalGuardianCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FollowCamera;
 
+
 	virtual void Tick(float DeltaSeconds) override;
 
 
@@ -65,6 +66,7 @@ protected:
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 	// End of APawn interface
 
+	bool isTakingDamage;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
 	float maxHealth_;
@@ -109,6 +111,11 @@ public:
 	//Returns isStealthed_ bool  
 	UFUNCTION(BlueprintPure, Category = "Player")
 	bool isPlayerInStealthMode() const { return isStealthed_; };
+
+	UFUNCTION(BlueprintPure, Category = "Player")
+	bool isPlayerTakingDamage() const { return isTakingDamage; };
+
+	void setTakingDamage(bool state);
 
 
 private:
