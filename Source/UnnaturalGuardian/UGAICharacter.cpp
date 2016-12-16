@@ -39,14 +39,10 @@ void AUGAICharacter::Tick( float DeltaTime )
 	if (playerCharacter_) {
 		if (canSeePlayer_ == true) {
 
-			playerCharacter_->setTakingDamage(true);
 			playerCharacter_->decreasePlayerHealth(0.1f);
 
 		}
-		else if (canSeePlayer_ == false) {
-			playerCharacter_->setTakingDamage(false);
-		}
-		if (playerCharacter_->isPlayerInStealthMode() == true) {
+		else if (playerCharacter_->isPlayerInStealthMode() == true) {
 			sightRadius_ = 750.0f;
 		}
 		else {
