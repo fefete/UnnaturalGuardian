@@ -20,22 +20,5 @@ AUnnaturalGuardianGameMode::AUnnaturalGuardianGameMode()
 void AUnnaturalGuardianGameMode::Tick(float deltaTime)
 {
 	Super::Tick(deltaTime);
-	
-	AUnnaturalGuardianCharacter* playerCharacter_ = Cast<AUnnaturalGuardianCharacter>(UGameplayStatics::GetPlayerPawn(this, 0));
-
-	//if (enemy_) {
-	//	UE_LOG(LogTemp, Log, TEXT("Has Enemy"));
-	//}
-
-	//check to see if we have a playerCharacter
-	//if (playerCharacter_) {
-
-	//	if (playerCharacter_->isPlayerInStealthMode() == true) {
-
-	//		
-
-	//	}
-
-	//}
 
 }
