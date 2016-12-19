@@ -22,7 +22,7 @@
 		},
 		{
 			"Name": "TrueSkyPlugin",
-			"Enabled": true
+			"Enabled": false
 		}
 	]
 }
