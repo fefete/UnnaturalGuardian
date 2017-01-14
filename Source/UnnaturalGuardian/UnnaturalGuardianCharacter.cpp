@@ -49,7 +49,7 @@ AUnnaturalGuardianCharacter::AUnnaturalGuardianCharacter()
 	SphereCollider->SetSphereRadius(200);
 
 	//Set Initial health values
-	maxHealth_ = 250.0;
+	maxHealth_ = 125.0;
 	playerCurrentHealth_ = maxHealth_;
 
 }
@@ -154,6 +154,11 @@ void AUnnaturalGuardianCharacter::Tick(float DeltaTime)
 
 	if (playerCurrentHealth_ < 0)
 		Destroy();
+
+	if (playerCurrentHealth_ < maxHealth_) {
+		playerCurrentHealth_ += 0.025f;
+	}
+
 }
 
 void AUnnaturalGuardianCharacter::decreasePlayerHealth(float amount)
