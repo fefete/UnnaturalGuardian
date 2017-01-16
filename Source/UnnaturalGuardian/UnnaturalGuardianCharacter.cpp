@@ -152,11 +152,11 @@ void AUnnaturalGuardianCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (playerCurrentHealth_ < 0)
-		Destroy();
+	//if (playerCurrentHealth_ < 0)
+		//Destroy();
 
 	if (playerCurrentHealth_ < maxHealth_) {
-		playerCurrentHealth_ += 0.025f;
+		playerCurrentHealth_ += 0.010f;
 	}
 
 }
