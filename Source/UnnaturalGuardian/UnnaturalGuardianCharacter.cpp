@@ -201,7 +201,7 @@ void AUnnaturalGuardianCharacter::destroyEnemy()
 		//If cast is succesful and MyActor is active
 		if (enemy && !enemy->IsPendingKill() && enemy->canSeePlayer() == false && isStealthed_ == true) {
 
-			enemy->Destroy();
+			//enemy->Destroy();
 
 		}
 
